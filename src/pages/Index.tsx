@@ -1,12 +1,77 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { Header } from "@/components/Header";
+import { DiagnosisForm } from "@/components/DiagnosisForm";
+import { ResultCard } from "@/components/ResultCard";
+import { Dashboard } from "@/components/Dashboard";
+import { motion } from "framer-motion";
 
 const Index = () => {
+  const [showResult, setShowResult] = useState(false);
+  const [hasThyroid, setHasThyroid] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
+  const [formData, setFormData] = useState<any>(null);
+
+  const handleResult = (thyroidDetected: boolean, data: any) => {
+    setHasThyroid(thyroidDetected);
+    setFormData(data);
+    setShowResult(true);
+    setShowDashboard(false);
+  };
+
+  const handleViewDashboard = () => {
+    setShowDashboard(true);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <main className="container py-8 px-4">
+        {!showDashboard ? (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-8"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                AI-Powered Thyroid Diagnosis
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Get instant insights into your thyroid health with our advanced AI analysis
+              </p>
+            </motion.div>
+
+            <DiagnosisForm onResult={handleResult} />
+            
+            {showResult && (
+              <ResultCard 
+                hasThyroid={hasThyroid} 
+                onViewDashboard={hasThyroid ? handleViewDashboard : undefined}
+              />
+            )}
+          </>
+        ) : (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                Your Personalized Care Dashboard
+              </h2>
+              <p className="text-muted-foreground">
+                Track your progress and follow personalized recommendations
+              </p>
+            </motion.div>
+
+            <Dashboard formData={formData} />
+          </>
+        )}
+      </main>
     </div>
   );
 };
