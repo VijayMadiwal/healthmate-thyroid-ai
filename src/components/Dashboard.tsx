@@ -62,31 +62,31 @@ export const Dashboard = ({ formData }: DashboardProps) => {
         className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
       >
         {/* Diagnosis Summary Card */}
-        <motion.div variants={itemVariants}>
-          <Card className="p-6 shadow-medium">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Card className="p-6 shadow-medium h-full">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <Activity className="h-5 w-5 text-primary" />
               </div>
               <h3 className="font-bold text-lg">Diagnosis Summary</h3>
             </div>
-            <p className="text-foreground font-medium mb-3">
+            <p className="text-foreground font-medium">
               You may have <span className="text-primary">Hypothyroidism</span>
             </p>
-            <p className="text-sm text-muted-foreground mb-3">Moderate Severity</p>
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>Confidence Score</span>
-                <span className="font-bold text-primary">78%</span>
-              </div>
-              <Progress value={78} className="h-2" />
-            </div>
           </Card>
         </motion.div>
 
         {/* Medication Card */}
-        <motion.div variants={itemVariants}>
-          <Card className="p-6 shadow-medium">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Card className="p-6 shadow-medium h-full">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/20">
                 <Pill className="h-5 w-5 text-secondary-foreground" />
@@ -103,8 +103,12 @@ export const Dashboard = ({ formData }: DashboardProps) => {
         </motion.div>
 
         {/* Lifestyle Recommendations */}
-        <motion.div variants={itemVariants}>
-          <Card className="p-6 shadow-medium">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Card className="p-6 shadow-medium h-full">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20">
                 <Heart className="h-5 w-5 text-accent-foreground" />
@@ -125,8 +129,12 @@ export const Dashboard = ({ formData }: DashboardProps) => {
         </motion.div>
 
         {/* Diet Plan */}
-        <motion.div variants={itemVariants}>
-          <Card className="p-6 shadow-medium">
+        <motion.div 
+          variants={itemVariants}
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Card className="p-6 shadow-medium h-full">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-success/20">
                 <Apple className="h-5 w-5 text-success-foreground" />
@@ -147,8 +155,13 @@ export const Dashboard = ({ formData }: DashboardProps) => {
         </motion.div>
 
         {/* Daily Tracker */}
-        <motion.div variants={itemVariants} className="md:col-span-2">
-          <Card className="p-6 shadow-medium">
+        <motion.div 
+          variants={itemVariants} 
+          className="lg:col-span-2"
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Card className="p-6 shadow-medium h-full">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
                 <TrendingUp className="h-5 w-5 text-primary" />
@@ -212,8 +225,13 @@ export const Dashboard = ({ formData }: DashboardProps) => {
         </motion.div>
 
         {/* Post-Cure Insights */}
-        <motion.div variants={itemVariants}>
-          <Card className="p-6 shadow-medium">
+        <motion.div 
+          variants={itemVariants} 
+          className="lg:col-start-2"
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <Card className="p-6 shadow-medium h-full">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20">
                 <Heart className="h-5 w-5 text-accent-foreground" />
