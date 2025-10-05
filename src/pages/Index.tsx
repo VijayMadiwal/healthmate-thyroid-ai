@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { DiagnosisForm } from "@/components/DiagnosisForm";
 import { ResultCard } from "@/components/ResultCard";
 import { Dashboard } from "@/components/Dashboard";
+import { useAuth } from "@/contexts/AuthContext";
 import { motion } from "framer-motion";
 
 const Index = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [showResult, setShowResult] = useState(false);
   const [hasThyroid, setHasThyroid] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
   const [formData, setFormData] = useState<any>(null);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/auth");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleResult = (thyroidDetected: boolean, data: any) => {
     setHasThyroid(thyroidDetected);
